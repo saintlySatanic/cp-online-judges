@@ -17,6 +17,18 @@ public class Fundamentals {
         return n<<pow;
     }
 
+    static int notOperator(int n) {
+        /*
+        Keep in mind the 2's compliment form for storing negative numbers in memory
+        
+        -> Flip all bits and store
+        -> When reading as integer check the MSB (if set then considered as a negative number)
+        -> IF -ve then use 2's compliment method to calculate the magnitude of the binary
+        -> return to caller
+        */
+        return ~n;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -25,5 +37,6 @@ public class Fundamentals {
         System.out.printf("Is %s pos bit set: %s \n", pos, isIthBitSet(n, pos));
         System.out.printf("Is Odd: %s \n", isOdd(n));
         System.out.printf("%s times 2 power %s is %s \n", n, pos, multiplyBy2Power(n, pos));
+        System.out.printf("Not of %s is %s \n", 0, notOperator(0));
     }
 }
