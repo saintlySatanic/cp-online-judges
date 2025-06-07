@@ -17,6 +17,11 @@ public class GetSetBit {
         return n & mask;
     }
 
+    static int setFirstIBits(int i) {
+        // first i bits set == 2^i -1 (RHS)
+        return (1<<i)-1;
+    }
+
     static int updateIthBit(int n, int i, int value){
         /*
         Update n at position i based on the input value(0,1)
@@ -35,11 +40,25 @@ public class GetSetBit {
         // return n & mask;
     }
 
+    static int clearBitsInRange(int n, int i, int j) {
+        if (i>=j) throw new IllegalArgumentException("Invliad indexs : constraint: i < j");
+        /*
+        index starts with 0
+        Keep in mind we might now know how many bits are used to represent an Integer; this can vary based on language and architecture
+        */
+       int maskLHS = -1<<(j+1);
+       int maskRHS = setFirstIBits(i);
+       int mask = maskLHS | maskRHS;
+
+       return n & mask;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
         int i = sc.nextInt();
-        System.out.printf("Last %s bits cleared of %s is %s", i, n, clearLastIBits(n, i));
+        int j = sc.nextInt();
+        System.out.printf("Bits cleared between range %s and %s for %s is %s\n", i, j, n, clearBitsInRange(n, i, j));
     }
 }
