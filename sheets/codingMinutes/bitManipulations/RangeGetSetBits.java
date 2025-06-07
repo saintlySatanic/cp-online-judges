@@ -9,7 +9,9 @@ public class RangeGetSetBits{
         i<j
         */
        if (i>=j) throw new IllegalArgumentException("Invalid positions specified");
-       int mask = (-1<<)&(-1>>)
+       int mask = (-1 << (j + 1)) | ((1 << i) - 1);
+
+       return mask;
     }
 
     static int setRangeOfBits(int n, int i, int j) {
@@ -20,7 +22,8 @@ public class RangeGetSetBits{
         i<j
         */
        if (i>=j) throw new IllegalArgumentException("Invalid positions specified");
-       int mask = (-1<<)&(-1>>)
+       int mask = ((1 << (j - i + 1)) - 1) << i;
+       return n | mask;
     }
 
     public static void main(String[] args) {

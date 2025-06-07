@@ -5,11 +5,11 @@ public class Fundamentals {
     static boolean isIthBitSet(int n, int pos) {
         if (pos < 0) throw new IllegalArgumentException("Invalid position value");
 
-        return (n & (1<<pos)) != 0 ? true: false;
+        return (n & (1<<pos)) != 0;
     }
     
     static boolean isOdd(int n) {
-        return (n & 1) == 0 ? false: true;
+        return (n & 1) != 0;
     }
 
     static int multiplyBy2Power(int n, int pow) {
