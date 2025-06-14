@@ -12,6 +12,20 @@ public class BinaryExponentiation {
         return res;
     }
 
+    static int moduloExponentiate(int a, int b, int mod) {
+        int res = 1;
+        
+        // looping will be done for 0(log(b)) times
+        while(b > 0) {
+            if ((b&1) != 0) res*=a;
+            res%=mod;
+            a = a*a; a%=mod;
+            b>>=1;
+        }
+
+        return res;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
