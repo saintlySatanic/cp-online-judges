@@ -15,10 +15,25 @@ public class PowerOf {
         return subSol;
     }
 
+    static int powerOfDP(int x, int pow, int[] powerValues) {
+        if (powerValues[pow] != 0) return powerValues[pow];
+
+        int subSol = powerOfDP(x, pow/2, powerValues) * powerOfDP(x, pow/2, powerValues);
+        if (pow%2!=0) subSol = x * subSol;
+        powerValues[pow] = subSol;
+
+        return subSol;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int x = sc.nextInt();
         int n = sc.nextInt();
-        System.out.printf("Power of %s to %s is %s \n",x, n, powerOf(x, n));
+
+        int[] powerValues = new int[n+1];
+        powerValues[0] = 1;
+        powerValues[1] = x;
+        
+        System.out.printf("Power of %s to %s is %s \n",x, n, powerOfDP(x, n, powerValues));
     }
 }
