@@ -6,12 +6,13 @@ public class TowerOfHanoi {
             System.out.printf("Moving Disk %s from %s to %s \n", diskId, from, to);
             return;
         }
-        if (disks == 2) {
-            System.out.printf("Moving Disk %s from %s to %s \n", diskId-1, from, aux);
-            System.out.printf("Moving Disk %s from %s to %s \n", diskId, from, to);
-            System.out.printf("Moving Disk %s from %s to %s \n", diskId-1, aux, to);
-            return;
-        }
+        // if (disks == 2) {
+        //     System.out.printf("Moving Disk %s from %s to %s \n", diskId-1, from, aux);
+        //     System.out.printf("Moving Disk %s from %s to %s \n", diskId, from, to);
+        //     System.out.printf("Moving Disk %s from %s to %s \n", diskId-1, aux, to);
+        //     return;
+        // }
+        
         // make way for largest disk to be transferred from -> to
         moveDisks(disks-1, disks-1, from, aux, to);
         // for largest disk to move all the disks above it should be in aux
