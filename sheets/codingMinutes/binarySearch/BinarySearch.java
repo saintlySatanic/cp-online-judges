@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class BinarySearch {
     public static int search(int[] nums, int target) {
+        /*
+         * return index istead of element
+         */
         int ans = -1; int len = nums.length;
 
         int start = 0;
@@ -15,7 +18,7 @@ public class BinarySearch {
             else if (nums[mid] > target) end = mid - 1;
             else {
                 // for larget nums;; ans = nums[mid] will be hit only once; so keep target check in else
-                ans = nums[mid];
+                ans = mid;
                 break;
             }
         }
@@ -35,6 +38,6 @@ public class BinarySearch {
         sc.close();
 
         int ans = search(nums, target);
-        System.out.println("Answer is: " + ans);
+        System.out.println("Answer is present in index : " + ans);
     }
 }
